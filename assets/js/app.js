@@ -1,1 +1,1 @@
-var everyMundo = angular.module('everyMundo', []);
+var everyMundo = angular.module('everyMundo', ['ngStorage']);

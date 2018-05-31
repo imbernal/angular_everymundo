@@ -16,7 +16,7 @@
 <body>
 
 
-<div ng-controller='userController' class="mainContainer container theme-showcase">
+<div ng-controller='userController' ng-init="initAllUsers()" class="mainContainer container theme-showcase">
 
 
     <div class="page-header">
@@ -32,9 +32,9 @@
                 </div>
             </form>
             <div class="filterButtons">
-                <button type="button" ng-click="showFemale('All')" class="btn btn-default">All</button>
-                <button type="button" ng-click="showFemale('Female')" class="btn btn-success">Female</button>
-                <button type="button" ng-click="showFemale('Male')" class="btn btn-primary">Male</button>
+                <button type="button" ng-click="usersGender('All')" class="btn btn-default">All</button>
+                <button type="button" ng-click="usersGender('Female')" class="btn btn-success">Female</button>
+                <button type="button" ng-click="usersGender('Male')" class="btn btn-primary">Male</button>
 
                 <button type="button" ng-click='deleteUsers()' ng-disabled="elementSelected()" class="btn btn-danger">
                     Delete
@@ -78,6 +78,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
 <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.js"></script>
 <script src="assets/js/app.js"></script>
 
 <!-- Services -->

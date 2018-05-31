@@ -1,16 +1,17 @@
-everyMundo.controller('userController', ['$scope', 'userService', function ($scope, userService) {
+everyMundo.controller('userController', ['$scope', 'userService', function ($scope,  userService) {
 
-    $scope.sortKey = 'id';
 
-    //Init with all my users
-
-    userService.allUsers().then(function (data) {
-        $scope.users = data;
-    });
-
+    $scope.currentGender = 'All';
 
     //This object going to contain all users id was selected
     $scope.selected = {};
+
+    //Init with all my users
+    $scope.initAllUsers = function(){
+        userService.initAllUsers();
+    };
+
+    $scope.users = userService.allUsers();
 
 
     //Function to return if there are any element selected to delete
@@ -19,27 +20,27 @@ everyMundo.controller('userController', ['$scope', 'userService', function ($sco
 
     };
 
-    $scope.sort = function (keyname) {
-        $scope.sortKey = keyname;
-        $scope.reverse = !$scope.reverse;
-    };
 
+    $scope.usersGender = function (gender) {
 
-    $scope.showFemale = function (gender) {
+        $scope.currentGender = gender;
 
         if(gender != "All"){
-            userService.usersFemale(gender).then(function (data) {
-                $scope.users = data;
-            });
+            $scope.users  = userService.usersGender(gender);
+        }else{
+            $scope.users = userService.allUsers();
         }
     };
 
 
     $scope.deleteUsers = function (user_id) {
 
-        userService.deleteUsers($scope.selected, user_id).then(function(data){
-            $scope.users = data;
-        });
+        $scope.users = userService.deleteUsers($scope.selected, user_id  , $scope.currentGender);
+
+        if($scope.currentGender != 'All')
+            $scope.users = userService.usersGender($scope.currentGender);
+
+
     }
 
 }]);
