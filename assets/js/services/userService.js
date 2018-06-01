@@ -33,8 +33,9 @@ everyMundo.service("userService", ["$localStorage", "$http" , 'Constants', funct
         var auxUsers = $localStorage.users.filter(function (element) {
 
             //Cheking if selected object is empty -> means that just want to delete an user.
-            if (angular.equals(selected, {}))
+            if (!angular.equals(selected, {}) && user_id != undefined){
                 return user_id != element.id ? element : null;
+            }
             else
                 return !selected[element.id] ? element : null;
 
