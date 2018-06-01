@@ -52,6 +52,8 @@ everyMundo.controller('userController', ['$scope', 'userService' , 'Constants', 
             $scope.users = userService.listUsers($scope.currentGender);
 
 
+        $scope.selected = {};
+
     }
 
 }]);

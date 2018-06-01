@@ -27,7 +27,7 @@ everyMundo.service("userService", ["$localStorage", "$http" , 'Constants', funct
         }
     };
 
-    
+
     this.deleteUsers = function (selected, user_id, gender) {
 
         var auxUsers = $localStorage.users.filter(function (element) {
@@ -43,6 +43,7 @@ everyMundo.service("userService", ["$localStorage", "$http" , 'Constants', funct
         //Update localStorage and my global user list
         $localStorage.users = auxUsers;
         this.users = auxUsers;
+
 
         //Return all user based on gender tab=> gender = currentGender
         return this.listUsers(gender);
