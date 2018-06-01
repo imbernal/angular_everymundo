@@ -49,7 +49,7 @@ everyMundo.controller('userController', ['$scope', 'userService' , 'Constants', 
         $scope.users = userService.deleteUsers($scope.selected, user_id , $scope.currentGender);
 
         if($scope.currentGender != Constants.Gender['all'])
-            $scope.users = userService.usersGender($scope.currentGender);
+            $scope.users = userService.allUsers($scope.currentGender);
 
 
     }

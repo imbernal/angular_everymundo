@@ -27,6 +27,8 @@ everyMundo.service("userService", ["$localStorage", "$http" , 'Constants', funct
         }
     };
 
+    
+
 
     this.deleteUsers = function (selected, user_id, gender) {
 
