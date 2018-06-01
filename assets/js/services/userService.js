@@ -1,8 +1,9 @@
-everyMundo.service("userService", ["$localStorage" ,"$http", function ($localStorage, $http) {
+everyMundo.service("userService", ["$localStorage", "$http" , 'Constants', function ($localStorage, $http ,Constants) {
 
     this.users = $localStorage.users;
 
 
+    //This function it is called at moment the application start, i save all date in the localStorage
     this.initAllUsers = function () {
 
         $http.get('data.json').then(function (result) {
@@ -10,34 +11,41 @@ everyMundo.service("userService", ["$localStorage" ,"$http", function ($localSto
         });
     };
 
-    this.allUsers = function () {
-        return $localStorage.users;
+    this.allUsers = function (gender) {
+
+        //Return All users based on gender
+
+        if (gender != Constants.Gender['all']) {
+
+            return $localStorage.users.filter(function (element) {
+                return gender != Constants.Gender['all'] && element.gender == gender ? element : null;
+            });
+
+        } else {
+
+            return this.users;
+        }
     };
 
 
-    this.usersGender = function (gender) {
-
-        return this.users.filter(function (element) {
-            return element.gender == gender;
-        });
-    };
-
-    this.deleteUsers = function (selected, user_id , currentGender) {
+    this.deleteUsers = function (selected, user_id, gender) {
 
         var auxUsers = $localStorage.users.filter(function (element) {
 
+            //Cheking if selected object is empty -> means that just want to delete an user.
             if (angular.equals(selected, {}))
                 return user_id != element.id ? element : null;
             else
-                return !selected[element.id]  ? element : null;
+                return !selected[element.id] ? element : null;
 
         });
 
-
+        //Update localStorage and my global user list
         $localStorage.users = auxUsers;
         this.users = auxUsers;
 
-        return this.allUsers();
+        //Return all user based on gender tab=> gender = currentGender
+        return this.allUsers(gender);
 
 
     }

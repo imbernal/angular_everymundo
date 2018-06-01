@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="everyMundo">
 <head>
-    <title>Every Mundo</title>
+    <title>{{title}}</title>
 </head>
 
 <link rel="stylesheet" ; href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
@@ -32,9 +32,9 @@
                 </div>
             </form>
             <div class="filterButtons">
-                <button type="button" ng-click="usersGender('All')" class="btn btn-default">All</button>
-                <button type="button" ng-click="usersGender('Female')" class="btn btn-success">Female</button>
-                <button type="button" ng-click="usersGender('Male')" class="btn btn-primary">Male</button>
+                <button type="button" ng-click="usersGender(genderAll)" class="btn btn-default">{{genderAll}}</button>
+                <button type="button" ng-click="usersGender(genderFemale)" class="btn btn-success">{{genderFemale}}</button>
+                <button type="button" ng-click="usersGender(genderMale)" class="btn btn-primary">{{genderMale}}</button>
 
                 <button type="button" ng-click='deleteUsers()' ng-disabled="elementSelected()" class="btn btn-danger">
                     Delete
