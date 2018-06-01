@@ -22,7 +22,7 @@ everyMundo.controller('userController', ['$scope', 'userService' , 'Constants', 
         userService.initAllUsers();
     };
 
-    $scope.users = userService.allUsers($scope.currentGender);
+    $scope.users = userService.listUsers($scope.currentGender);
 
 
     /*
@@ -39,7 +39,7 @@ everyMundo.controller('userController', ['$scope', 'userService' , 'Constants', 
 
         $scope.currentGender = gender;
 
-        $scope.users = userService.allUsers($scope.currentGender);
+        $scope.users = userService.listUsers($scope.currentGender);
 
     };
 
@@ -49,7 +49,7 @@ everyMundo.controller('userController', ['$scope', 'userService' , 'Constants', 
         $scope.users = userService.deleteUsers($scope.selected, user_id , $scope.currentGender);
 
         if($scope.currentGender != Constants.Gender['all'])
-            $scope.users = userService.allUsers($scope.currentGender);
+            $scope.users = userService.listUsers($scope.currentGender);
 
 
     }

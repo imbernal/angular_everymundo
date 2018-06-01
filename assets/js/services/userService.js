@@ -11,7 +11,7 @@ everyMundo.service("userService", ["$localStorage", "$http" , 'Constants', funct
         });
     };
 
-    this.allUsers = function (gender) {
+    this.listUsers = function (gender) {
 
         //Return All users based on gender
 
@@ -28,8 +28,6 @@ everyMundo.service("userService", ["$localStorage", "$http" , 'Constants', funct
     };
 
     
-
-
     this.deleteUsers = function (selected, user_id, gender) {
 
         var auxUsers = $localStorage.users.filter(function (element) {
@@ -47,7 +45,7 @@ everyMundo.service("userService", ["$localStorage", "$http" , 'Constants', funct
         this.users = auxUsers;
 
         //Return all user based on gender tab=> gender = currentGender
-        return this.allUsers(gender);
+        return this.listUsers(gender);
 
 
     }
